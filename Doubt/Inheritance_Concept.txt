@@ -1,0 +1,6 @@
+                            Animal
+                Dog <---------------------> Cat
+            D1<------>D2                    C1<------>C2
+
+
+D1 has only relation with Dog and Animal not with D2 or any other class
