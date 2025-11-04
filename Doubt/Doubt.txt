@@ -1,0 +1,44 @@
+what is the difference between these two lines? 
+
+Parent ob1 = new Child(); 
+Child ob2 = new Child();
+
+ANSWER:
+
+
+1. Parent ob1 = new Child();
+
+The object is of type Child
+The reference is of type Parent
+
+ob1 can only access the methods and variables defined in Parent 
+(even though it’s a Child object underneath).
+However, if a method is overridden, the Child’s 
+version will execute — this is runtime polymorphism.
+
+class Parent {
+    void show() { System.out.println("Parent show"); }
+}
+***********************************************************
+class Child extends Parent {
+    void show() { System.out.println("Child show"); }
+    void display() { System.out.println("Child display"); }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Parent ob1 = new Child();
+        ob1.show();     // ✅ allowed (Parent method)
+        // ob1.display(); // ❌ not allowed (Parent reference doesn’t know this)
+    }
+}
+
+
+2. Child ob2 = new Child();
+
+Both the reference and the object are of type Child.
+You can access everything in Child, including all inherited stuff from Parent.
+
+Child ob2 = new Child();
+ob2.show();     // ✅ from Parent, overridden in Child
+ob2.display();  // ✅ from Child
