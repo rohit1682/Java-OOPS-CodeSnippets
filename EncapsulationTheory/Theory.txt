@@ -1,0 +1,110 @@
+🧩 What is Encapsulation?
+
+Encapsulation means binding data (variables) and methods (functions) that operate on that data into a single unit, while restricting direct access to the data from outside.
+
+In Java, this is achieved through:
+
+Private fields (data hiding)
+
+Public getters/setters (controlled access)
+
+Packages (access boundaries)
+
+🧱 How Packages Support Encapsulation
+
+A package in Java is like a folder that groups related classes.
+It not only organizes code but also controls visibility between classes.
+
+Packages + access modifiers (private, default, protected, public) together create encapsulation boundaries.
+
+🔒 Example: Without Encapsulation
+
+All fields are public — anyone can access or modify them from anywhere.
+
+// File: com/company/Employee.java
+package com.company;
+
+public class Employee {
+    public String name;
+    public double salary;
+}
+
+// File: com/client/Main.java
+package com.client;
+import com.company.Employee;
+
+public class Main {
+    public static void main(String[] args) {
+        Employee emp = new Employee();
+        emp.name = "Rohit";
+        emp.salary = -10000;  // ❌ Invalid but allowed
+        System.out.println(emp.name + " earns " + emp.salary);
+    }
+}
+
+
+➡️ Here, salary can be set to an invalid value.
+There’s no control or data protection — encapsulation is broken.
+
+✅ Example: With Encapsulation (Using Packages + Access Modifiers)
+// File: com/company/Employee.java
+package com.company;
+
+public class Employee {
+    private String name;
+    private double salary;
+
+    // Setter (validation included)
+    public void setSalary(double salary) {
+        if (salary > 0) this.salary = salary;
+        else System.out.println("Invalid salary!");
+    }
+
+    // Getter
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+// File: com/client/Main.java
+package com.client;
+import com.company.Employee;
+
+public class Main {
+    public static void main(String[] args) {
+        Employee emp = new Employee();
+        emp.setName("Rohit");
+        emp.setSalary(-10000);   // Will trigger validation
+        System.out.println(emp.getName() + " earns " + emp.getSalary());
+    }
+}
+
+🔍 How This Demonstrates Encapsulation
+
+Aspect	Explanation
+Private variables	Prevents direct access to sensitive data (salary, name).
+Public methods	Provides controlled access through getters/setters.
+Packages	Restrict class visibility between modules — only what’s public is visible outside com.company.
+Access Modifiers	Work with packages to define what’s visible within or outside the package.
+
+
+🧠 Analogy
+
+Think of a package as a capsule 🧴 containing related classes.
+Encapsulation ensures that only necessary methods are exposed outside, while internal data remains hidden and protected.
+
+🧭 Summary
+
+Concept	Role in Encapsulation
+Private fields	Hide data inside the class
+Public getters/setters	Control external access
+Package	Defines module boundaries
+Access modifiers	Control visibility across packages
