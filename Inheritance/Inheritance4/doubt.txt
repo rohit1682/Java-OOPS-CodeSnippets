@@ -1,0 +1,55 @@
+why is this working? 
+
+default void methodA() { 
+    int x = 10; 
+    System.out.println("x in methodA: " + x); 
+} 
+
+and this is not working? 
+
+void methodA() { 
+    int x = 10; 
+    System.out.println("x in methodA: " + x); 
+}
+
+ANSWER:
+
+⚙️ The Difference Lies in the default Keyword
+✅ This Works:
+default void methodA() {
+    int x = 10;
+    System.out.println("x in methodA: " + x);
+}
+
+
+👉 Because default methods in interfaces are allowed to have a body.
+This feature was introduced in Java 8 to let interfaces provide a default implementation that classes can use or override.
+
+So when you declare it as default, Java knows:
+
+“Okay, this is a method that belongs to an interface and it has an implementation.”
+
+❌ This Doesn’t Work:
+void methodA() {
+    int x = 10;
+    System.out.println("x in methodA: " + x);
+}
+
+
+👉 This fails because, by default, methods in an interface are abstract,
+and abstract methods cannot have a body.
+
+So the compiler sees:
+
+“Wait — you didn’t use default, static, or private, but you added a body. That’s illegal in an interface.”
+
+Hence, you’ll get a compile-time error like:
+
+error: interface abstract methods cannot have body
+
+🧠 Summary
+Declaration	Allowed?	Reason
+void methodA();	✅	Abstract method (no body)
+default void methodA() { ... }	✅	Default method with body (Java 8+)
+static void methodA() { ... }	✅	Static method with body (Java 8+)
+void methodA() { ... }	❌	Abstract method cannot have body
