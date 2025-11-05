@@ -8,12 +8,11 @@ class GrandParent {
 }   
 
 class Parent {
-
     /*
      * If the parent class does not have a default constructor (a constructor with no parameters), and 
      * the child calls the parent constructor using super() without arguments, it will not throw an error.
      * the compiler created an empty default constructor for the parent class. 
-     */
+    */
 
     Parent() {
         System.out.println("Parent Constructor");
