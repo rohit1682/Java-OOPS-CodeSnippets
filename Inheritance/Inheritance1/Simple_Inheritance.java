@@ -56,7 +56,7 @@ class Child extends Parent {
 
 public class Simple_Inheritance {
     public static void main(String[] args) {
-        Simple_Inheritance() {
+        // Simple_Inheritance() {
             // Child childInstanceWithValue = new Child(20);
 
             /*
@@ -65,10 +65,9 @@ public class Simple_Inheritance {
                    -> new Child()                   2. 
                        -> Child() Constructor 
                            -> Parent() Constructor  1.
-*/
             */
 
-        }
+        // }
 
         // Child childInstance = new Child();
         // System.out.println("Child instance created: " + childInstance);
