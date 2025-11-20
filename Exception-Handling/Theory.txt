@@ -1,0 +1,81 @@
+What Is an Exception?
+
+An exception is an abnormal event that stops the normal flow of a program.
+
+Example:
+
+Dividing by zero
+File not present
+Wrong input
+Database connection failure
+Array index out of range
+Java handles these using a special mechanism called Exception Handling.
+
+
+Why Exception Handling Exists?
+
+To prevent the program from crashing.
+To handle errors gracefully.
+To separate normal logic from error-handling logic.
+
+
+
+
+Exception Hierarchy in Java
+
+
+                   Object
+                      |
+                   Throwable
+             ---------------------
+             |                   |
+          Error             Exception
+                                  |
+                   ------------------------------
+                   |                            |
+         Checked Exceptions         Unchecked Exceptions (RuntimeException)
+
+
+Error → Not recoverable (JVM issues)
+
+Examples: OutOfMemoryError, StackOverflowError
+
+Exception → Recoverable
+
+Two types:
+
+Checked Exceptions
+
+Compiler checks these → force you to handle
+Examples: FileNotFoundException, IOException, SQLException
+
+Unchecked Exceptions
+
+Runtime errors → not checked by compiler
+Examples: ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException
+
+
+
+How to Handle Exceptions
+
+Using these keywords:
+
+Keyword	                    Meaning
+try	                Code that may cause exception
+catch	            Handles the exception
+finally	            Runs always (cleanup)
+throw	            Manually throw an exception
+throws	            Declare that a method may throw exception
+
+
+
+
+What is Nested try in Java?
+
+A nested try means placing one try block inside another try block.
+
+You use it when:
+
+You have multiple risky operations inside a bigger risky operation.
+You want different levels of exception handling.
+Some errors should be handled locally, while others should be handled globally.
