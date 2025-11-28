@@ -1,0 +1,153 @@
+Here are the **trickiest, most exam-confusing, interview-confusing points about Interface and Abstraction in Java**—explained SUPER clearly so you never forget:
+
+---
+
+# ⭐ **TRICKY THINGS ABOUT ABSTRACTION (Abstract Classes)**
+
+### **1. You CAN have constructors in abstract classes**
+
+* Many students think abstract = no objects = no constructor ❌
+* But constructors exist to **initialize variables of subclasses** ✔️
+
+### **2. Abstract class can have BOTH abstract and non-abstract methods**
+
+* Meaning: It can partially implement functionality.
+
+### **3. You CANNOT create an object of abstract class — BUT you CAN have reference**
+
+```java
+Animal a = new Dog();   // Allowed
+Animal a = new Animal(); // ❌ Not allowed
+```
+
+### **4. Abstract class can have variables of ANY type**
+
+* final
+* non-final
+* static
+* non-static
+
+### **5. Abstract class supports 0% to 100% abstraction**
+
+* Can give no implementation OR full implementation.
+
+### **6. You must override ALL abstract methods in child class**
+
+* Unless the child is also abstract.
+
+### **7. Abstract class can extend another class**
+
+* Normal or abstract both allowed.
+
+### **8. Abstract class CAN implement interfaces**
+
+* But it is not forced to override all methods.
+
+### **9. Abstract class can have `main()` method**
+
+Yes!
+You can run an abstract class file.
+
+---
+
+# ⭐ **TRICKY THINGS ABOUT INTERFACE (Java)**
+
+### **1. Interface methods used to be always abstract — NOT TRUE in modern Java**
+
+Since Java 8+ interfaces can have:
+
+* **abstract methods**
+* **default methods** (with body)
+* **static methods** (with body)
+* **private methods** (Java 9+)
+
+### **2. Interface variables are ALWAYS:**
+
+* `public static final`
+  —even if you don’t write it:
+
+```java
+int x = 10; 
+// becomes public static final int x = 10;
+```
+
+### **3. You cannot have constructors in interface**
+
+Because:
+
+* No object creation
+* No instance fields
+
+### **4. A class can implement MULTIPLE interfaces**
+
+This is Java’s **multiple inheritance support**.
+
+### **5. Interface cannot extend a class**
+
+It can extend ONLY interfaces.
+
+### **6. Interface can extend multiple interfaces**
+
+```java
+interface A {}
+interface B {}
+interface C extends A, B {}
+```
+
+### **7. Two interfaces can have same default method name → DIAMOND PROBLEM**
+
+Example:
+
+```java
+interface A { default void show() {} }
+interface B { default void show() {} }
+class C implements A, B { }
+```
+
+❌ Compiler error: duplicate default method.
+✔️ FIX:
+
+```java
+class C implements A, B {
+    public void show() {
+        A.super.show();
+    }
+}
+```
+
+### **8. Interface methods are always public**
+
+Even if you write:
+
+```java
+void run();
+```
+
+Compiler treats it as:
+
+```java
+public abstract void run();
+```
+
+### **9. You CAN create reference of interface**
+
+```java
+Runnable r = new Thread();
+```
+
+### **10. Interface supports 100% abstraction (until Java 8)**
+
+Now not exactly 100% because of default methods.
+
+---
+
+# 🆚 **ABSTRACT CLASS vs INTERFACE — Hidden Tricks**
+
+| Feature                         | Abstract Class                       | Interface                                                    |
+| ------------------------------- | ------------------------------------ | ------------------------------------------------------------ |
+| **Constructor**                 | ✔️ Allowed                           | ❌ Not allowed                                                |
+| **Variables**                   | Any type                             | Always `public static final`                                 |
+| **Multiple Inheritance**        | ❌ No                                 | ✔️ Yes                                                       |
+| **Methods with body**           | ✔️ Yes                               | ✔️ Yes (default, static)                                     |
+| **Access modifiers of methods** | Any                                  | Always public                                                |
+| **When to use?**                | When you want partial

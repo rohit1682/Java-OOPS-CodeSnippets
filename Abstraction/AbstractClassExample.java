@@ -3,6 +3,7 @@ abstract class Animal {
 
     // Abstract method (no implementation)
     abstract void sound();
+    // abstract void eat();
 
     // Normal method (with implementation)
     void sleep() {
@@ -27,9 +28,9 @@ class Cat extends Animal {
 }
 
 // Main class
-public class AbstractClassExample1 {
+public class AbstractClassExample {
     public static void main(String[] args) {
-        
+
         // Animal a = new Animal(); // ❌ Not allowed (abstract class)
 
         Animal dog = new Dog();

@@ -1,0 +1,9 @@
+🆚 ABSTRACT CLASS vs INTERFACE — Hidden Tricks
+
+Feature	                        Abstract Class	                            Interface
+Constructor	                    ✔️ Allowed	                                ❌ Not allowed
+Variables	                    Any type	                                Always public static final
+Multiple Inheritance	        ❌ No	                                    ✔️ Yes
+Methods with body	            ✔️ Yes	                                    ✔️ Yes (default, static)
+Access modifiers of methods	    Any	                                        Always public
+When to use?	                When you want partial implementation	    When you want only method declaration / multiple inheritance
