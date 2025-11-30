@@ -6,22 +6,16 @@ public class SimpleError {
         int a = sc.nextInt();
         int b = sc.nextInt();
 
+        // System.out.println("Result: " + (a / b));
+
         try {
             int c = a/b;
             System.out.println("Result: " + c);
-            // Try block can also be nested within another try block
-
-            // try {
-
-            // }
-            // catch () {
-
-            // }
         }
         catch (Exception e) {
             System.out.println("Error: Division by zero is not allowed.");
         }
-        // The finally block will always execute
+        // The finally block will always execute. We may omit writing catch block if we want to use only finally block
         finally {
             System.out.println("Execution of try-catch block is complete.");
         }

@@ -79,3 +79,76 @@ You use it when:
 You have multiple risky operations inside a bigger risky operation.
 You want different levels of exception handling.
 Some errors should be handled locally, while others should be handled globally.
+
+
+
+Throw — manually throwing an exception
+
+You use throw when you want to create and throw an exception yourself.
+
+⭐ Key points:
+
+Used inside a method / block.
+
+Creates an exception object.
+Immediately stops execution and jumps to the nearest catch.
+You throw one exception at a time.
+
+✔ Example:
+public class Test {
+    void checkAge(int age) {
+        if (age < 18) {
+            throw new ArithmeticException("Not eligible to vote");
+        }
+        System.out.println("Eligible to vote");
+    }
+
+    public static void main(String[] args) {
+        Test t = new Test();
+        t.checkAge(16);
+    }
+}
+
+
+Output:
+
+Exception in thread "main" java.lang.ArithmeticException: Not eligible to vote
+
+
+Throws — declaring that a method might throw an exception
+
+You use throws when:
+
+A method might throw a checked exception.
+You don't want to handle it inside the method.
+You pass the responsibility to the caller.
+
+⭐ Key points:
+
+Used in method signature.
+Declares potential exceptions.
+Mostly for checked exceptions (e.g., IOException).
+
+✔ Example:
+public class Demo {
+    void readFile() throws IOException {
+        FileInputStream f = new FileInputStream("data.txt");  
+    }
+
+    public static void main(String[] args) {
+        try {
+            Demo d = new Demo();
+            d.readFile();
+        } catch (IOException e) {
+            System.out.println("File error: " + e.getMessage());
+        }
+    }
+}
+
+Simple analogy
+
+throw → throwing a ball
+You actually throw the ball.
+throws → warning that you might throw a ball
+You tell the other person:
+“Be ready, I might throw this ball at you.”

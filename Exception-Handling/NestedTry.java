@@ -11,13 +11,15 @@ public class NestedTry {
                 int result = arr[1] / 0; // risky code
                 System.out.println("Result = " + result);
 
-            } catch (ArithmeticException e) {
+            } 
+            catch (ArithmeticException e) {
                 System.out.println("Inner catch: Cannot divide by zero");
             }
 
             System.out.println(arr[5]); // another risky code → array index error
 
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } 
+        catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Outer catch: Array index error");
         }
 
